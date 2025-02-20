@@ -1,3 +1,5 @@
+import 'package:diskominfo/page/login/login_binding.dart';
+import 'package:diskominfo/page/login/login_view.dart';
 import 'package:diskominfo/page/splash/splash_view.dart';
 import 'package:get/get.dart';
 
@@ -16,11 +18,11 @@ class RouteApp {
         page: () => const SplashPage(),
         // binding: SplashBinding()
         ),
-    // GetPage(
-    //     name: LoginView.route,
-    //     transition: Transition.fadeIn,
-    //     page: () => LoginView(),
-    //     binding: LoginBinding()
-        // ),
+    GetPage(
+        name: LoginView.route,
+        transition: Transition.fadeIn,
+        page: () => LoginView(),
+        binding: LoginBinding()
+        ),
   ];
 }

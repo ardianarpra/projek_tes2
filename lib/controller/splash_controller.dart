@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:diskominfo/page/login/login_view.dart';
 import 'package:diskominfo/utils/session_manager.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,19 +17,22 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    initConnectivity();
+    // initConnectivity();
+    changePage();
    
   }
 
   Future<void> changePage()async{
     var session = SessionManager();
-    String? token = await session.getAuthToken();
-
-    if(token!=null){
-      // Get.offAllNamed(NavigationView.route);
-    } else {
-      // Get.offAllNamed(LoginView.route);
-    }
+    String token = await session.getAuthToken();
+    Future.delayed(const Duration(seconds: 3),(){
+      print("ganti halaman oy"+token);
+      if(token!=""){
+        // Get.offAllNamed(NavigationView.route);
+      } else {
+        Get.offAllNamed(LoginView.route);
+      }
+    });
   }
 
   Future<void> initConnectivity() async {

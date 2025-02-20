@@ -2,6 +2,7 @@ import 'package:diskominfo/common/colors.dart';
 import 'package:diskominfo/page/splash/splash_view.dart';
 import 'package:diskominfo/router/route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Aduan Kominfo',
       // theme: ThemeData(
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           ),
           debugShowCheckedModeBanner: false,
           initialRoute: RouteApp.initial,
+          getPages: RouteApp.routes,
     );
   }
 }

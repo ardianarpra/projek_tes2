@@ -38,25 +38,20 @@ class Button extends StatelessWidget {
       height: heigth,
       child: ElevatedButton(
           onPressed: onPressed,
+          style:
+              ButtonStyle(
+                  foregroundColor: WidgetStateProperty.all<Color>(colors),
+                  backgroundColor: WidgetStateProperty.all<Color>(colors),
+                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(radius ?? 8),
+                  ))),
           child: FittedBox(
             child: Text(
               name,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: TextStyle(color: textColors,fontSize: fontSize),
             ),
-          ),
-          style:
-              // ElevatedButton.styleFrom(
-              //     primary: colors,
-              //     textStyle:
-              //         TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
-              //         ),
-              ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(colors),
-                  backgroundColor: MaterialStateProperty.all<Color>(colors),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(radius ?? 8),
-                  )))),
+          )),
     );
   }
 }

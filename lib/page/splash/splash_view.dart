@@ -17,76 +17,82 @@ class SplashPage extends StatelessWidget {
       init: SplashController(),
       builder: (controller) {
         return Scaffold(
-          body: Stack(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // SizedBox(
-                  //   child: Image.asset(
-                  //     Config.pathSplash,
-                  //     width: 40,
-                  //     height: 40,
-                  //     fit: BoxFit.contain,
-                  //   ),
-                  // ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    width: 100,
-                    child: Column(
-                      children: [
-                        Text(
-                          "Diskominfo",
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                        controller.isLoadSplash.value
-                            ? const SizedBox()
-                            : Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    controller.isConnectServer.value
-                                        ? controller.isMaintenance.value
-                                            ? "maintenance".tr
-                                            : controller.isHaveNewVersion.value
-                                                ? controller
-                                                        .updateImportant.value
-                                                    ? ""
-                                                    : "update_version".tr
-                                                : ""
-                                        : "failed_connect_server".tr,
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
-                                  ),
-                                ],
-                              ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        controller.isLoadSplash.value
-                            ?const Center(
-                                child: SizedBox(
-                                  width: 26,
-                                  height: 26,
-                                  child: CircularProgressIndicator(
-                                    color: AppColors.colorAccent,
-                                  ),
-                                ),
-                              )
-                            : const SizedBox(),
-                      ],
+          body: SizedBox(
+            height: Get.height,
+            width: Get.width,
+            child: Stack(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // SizedBox(
+                    //   child: Image.asset(
+                    //     Config.pathSplash,
+                    //     width: 40,
+                    //     height: 40,
+                    //     fit: BoxFit.contain,
+                    //   ),
+                    // ),
+                    const SizedBox(
+                      height: 10,
                     ),
-                  )
-                ],
-              ),
-              
-            ],
+                    SizedBox(
+                      width: Get.width,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Diskominfo",
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
+                          controller.isLoadSplash.value
+                              ? const SizedBox()
+                              : Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text(
+                                      controller.isConnectServer.value
+                                          ? controller.isMaintenance.value
+                                              ? "maintenance".tr
+                                              : controller.isHaveNewVersion.value
+                                                  ? controller
+                                                          .updateImportant.value
+                                                      ? ""
+                                                      : "update_version".tr
+                                                  : ""
+                                          : "failed_connect_server".tr,
+                                      textAlign: TextAlign.center,
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
+                                  ],
+                                ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          controller.isLoadSplash.value
+                              ? Center(
+                                  child: SizedBox(
+                                    width: 26,
+                                    height: 26,
+                                    child: CircularProgressIndicator(
+                                      color: AppColors.primary,
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                
+              ],
+            ),
           ),
         );
       },
